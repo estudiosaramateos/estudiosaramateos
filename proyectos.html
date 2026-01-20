@@ -113,5 +113,16 @@
     </div>
   </footer>
 
+<script>
+  window.addEventListener("load", () => {
+    const proyectos = document.querySelectorAll('.proyecto');
+
+    proyectos.forEach((proyecto, index) => {
+      proyecto.classList.add('show');
+      proyecto.style.animationDelay = `${index * 0.30}s`;
+    });
+  });
+</script>
+
 </body>
 </html>
