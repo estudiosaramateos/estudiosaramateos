@@ -1162,5 +1162,37 @@ body.contacto .redes-sociales a:hover {
   /* ---------- COOKIE BANNER ---------- */
   .cookie-banner {
     font-size: 0.85rem;
-  }
+
+/* Banner CookieYes */
+#cookieyes-banner {
+  background-color: var(--arena) !important;   /* Fondo arena */
+  color: var(--topo) !important;               /* Texto topo */
+  border-radius: 14px !important;
+  padding: 18px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* Botón principal */
+#cookieyes-banner .cookieyes-btn {
+  border-radius: 20px !important;              /* Botones redondos */
+  padding: 10px 18px !important;
+  background-color: var(--negro) !important;   /* Fondo negro */
+  color: var(--arena) !important;              /* Texto arena */
+  border: none !important;
+  font-weight: 600;
+}
+
+/* Botón secundario */
+#cookieyes-banner .cookieyes-btn.secondary {
+  background-color: var(--arena) !important;   /* Fondo arena */
+  color: var(--topo) !important;               /* Texto topo */
+  border: 1px solid var(--topo) !important;
+}
+
+/* Enlace de "Más info" */
+#cookieyes-banner a {
+  color: var(--topo) !important;
+  text-decoration: underline !important;
+}
+
 }
