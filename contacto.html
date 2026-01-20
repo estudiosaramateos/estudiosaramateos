@@ -44,7 +44,7 @@
       <h1>Contacto</h1>
       <p>Si quieres ponerte en contacto conmigo, completa el siguiente formulario o utiliza mis datos de contacto.</p>
 
-      <form action="https://formspree.io/f/mpqqjjpe" method="POST" class="contact-form">
+      <form action="https://formsubmit.co/hola@estudiosaramateos.com" method="POST" class="contact-form">
   <label for="nombre">Nombre</label>
   <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre">
 
@@ -54,8 +54,11 @@
   <label for="mensaje">Mensaje</label>
   <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje..."></textarea>
 
-  <input type="hidden" name="_redirect" value="https://www.estudiosaramateos.com/gracias.html">
-  <input type="text" name="_gotcha" style="display:none">
+  <!-- Evita spam -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Redirige a gracias -->
+  <input type="hidden" name="_next" value="https://www.estudiosaramateos.com/gracias.html">
 
   <button type="submit">Enviar</button>
 </form>
