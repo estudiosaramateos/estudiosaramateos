@@ -918,16 +918,49 @@ body.contacto .redes-sociales a:hover {
 
 /* ================= PÁGINAS LEGALES: Aviso Legal, Privacidad, Cookies ================= */
 
+/* =========================HEADER AVISOS (igual que estudio)========================= */
+
+body.avisos header {
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+body.avisos .logo-small {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}
+
+body.avisos nav {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+
+/* =========================CONTENIDO AVISOS (sin animación)========================= */
+
+body.avisos * {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.avisos h1 {
+  width: auto !important;
+  white-space: normal !important;
+}
+
 /* CONTENEDOR PRINCIPAL */
 .section.avisos {
   max-width: 900px;
   margin: 180px auto 150px;
   padding: 0 20px;
   text-align: left;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.2s;
 }
 
 /* TÍTULO PRINCIPAL */
@@ -1163,36 +1196,124 @@ body.contacto .redes-sociales a:hover {
   .cookie-banner {
     font-size: 0.85rem;
 
-/* Banner CookieYes */
-#cookieyes-banner {
-  background-color: var(--arena) !important;   /* Fondo arena */
-  color: var(--topo) !important;               /* Texto topo */
+/* Banner */
+div[id*="cookie"], div[class*="cookie"], div[id*="cy"], div[class*="cy"] {
+  background-color: var(--arena) !important;
+  color: var(--topo) !important;
   border-radius: 14px !important;
-  padding: 18px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }
 
-/* Botón principal */
-#cookieyes-banner .cookieyes-btn {
-  border-radius: 20px !important;              /* Botones redondos */
+/* Botones */
+button, .cookieyes-btn, .cy-btn, button[class*="cookie"], button[id*="cookie"] {
+  border-radius: 20px !important;
   padding: 10px 18px !important;
-  background-color: var(--negro) !important;   /* Fondo negro */
-  color: var(--arena) !important;              /* Texto arena */
+  background-color: var(--negro) !important;
+  color: var(--arena) !important;
   border: none !important;
-  font-weight: 600;
 }
 
 /* Botón secundario */
-#cookieyes-banner .cookieyes-btn.secondary {
-  background-color: var(--arena) !important;   /* Fondo arena */
-  color: var(--topo) !important;               /* Texto topo */
+button.secondary, .cookieyes-btn.secondary, .cy-btn.secondary {
+  background-color: var(--arena) !important;
+  color: var(--topo) !important;
   border: 1px solid var(--topo) !important;
 }
 
-/* Enlace de "Más info" */
-#cookieyes-banner a {
-  color: var(--topo) !important;
-  text-decoration: underline !important;
-}
+/* =========================
+   ARREGLO MÓVIL (MINIMAL)
+   ========================= */
+
+@media screen and (max-width: 900px) {
+
+  /* 1) Evitar scroll horizontal */
+  body, html {
+    overflow-x: hidden;
+  }
+
+  /* 2) Header: ajustar padding */
+  header {
+    padding: 16px 18px;
+  }
+
+  /* 3) Nav: que no se salga */
+  nav {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* 4) Footer: columna y centrado */
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-right {
+    justify-content: center;
+  }
+
+  /* 5) Ajuste general de secciones */
+  .section {
+    padding: 0 18px;
+    margin: 18px auto 0;
+  }
+
+  /* 6) Proyectos: pasar a 1 columna */
+  .proyectos-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 18px !important;
+    gap: 20px !important;
+  }
+
+  /* 7) Intro estudio: que la imagen baje */
+  .intro-estudio .intro-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 80px auto 80px !important;
+    gap: 30px !important;
+  }
+
+  .intro-estudio .intro-image {
+    flex: 0 0 100% !important;
+    max-width: 420px;
+  }
+
+  .intro-estudio .intro-text {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* 8) Contacto: columnas abajo */
+  body.contacto .intro-container {
+    flex-direction: column !important;
+    gap: 40px !important;
+    padding: 0 18px !important;
+  }
+
+  body.contacto .section.contacto {
+    padding: 80px 18px 120px !important;
+  }
+
+  /* 9) Proyectos individuales: imágenes full */
+  .imagenes-proyecto {
+    padding: 0 18px !important;
+  }
+
+  .doble-vertical {
+    grid-template-columns: 1fr !important;
+  }
 
 }
