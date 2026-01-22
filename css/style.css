@@ -1386,4 +1386,197 @@ body.gracias .btn-volver:hover {
     width: 100%;
     text-align: center;
   }
+
+/* =========================
+   MENÚ HAMBURGUESA (GLOBAL)
+========================= */
+
+/* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #111;
+  margin: 5px 0;
+  border-radius: 10px;
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+/* Transformación a X */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menú Desktop */
+nav.menu {
+  display: flex;
+  gap: 18px;
+}
+
+/* =========================
+   MENÚ HAMBURGUESA (GLOBAL)
+========================= */
+
+.menu-toggle {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #111;
+  margin: 5px 0;
+  border-radius: 10px;
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+/* X */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================
+   MÓVIL (FULLSCREEN)
+========================= */
+@media (max-width: 768px) {
+
+  /* Mostrar hamburguesa */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Ocultar menú normal */
+  header .menu {
+    display: none !important;
+  }
+
+  /* MENÚ FULLSCREEN */
+  header .menu.open {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;                 /* clave para ocupar toda la pantalla */
+    background: #3b332c !important;      /* marrón elegante (cambia aquí si quieres) */
+    z-index: 9998 !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 28px !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity .4s ease !important;
+    text-align: center !important;
+  }
+
+  header .menu.open.show {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  header .menu.open a {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.6rem !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    color: var(--arena) !important;
+    text-align: center !important;
+  }
+
+  header .menu.open a:hover,
+  header .menu.open a.active {
+    color: #fff !important;
+  }
+
+  /* Overlay */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9997;
+    opacity: 0;
+    transition: opacity .4s ease;
+    pointer-events: none;
+  }
+
+  .menu-overlay.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Evitar scroll cuando el menú está abierto */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Logo centrado */
+  .header {
+    justify-content: center !important;
+    padding: 18px 18px !important;
+  }
+
+/* =========================
+   FOOTER MÓVIL (CENTRADO)
+========================= */
+@media (max-width: 768px) {
+  .footer {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+    padding: 25px 15px !important;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100% !important;
+  }
+
+  .footer-right {
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+}
+
+
 }
