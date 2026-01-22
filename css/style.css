@@ -1243,48 +1243,52 @@ body.avisos h1 {
 }
 
 /* =========================
-   MENÚ FULLSCREEN MÓVIL
+   MENÚ MÓVIL – DESPLEGABLE DESDE DERECHA
 ========================= */
+
 @media (max-width: 768px) {
 
- .menu-toggle {
+  /* Botón hamburguesa visible */
+  .menu-toggle {
     display: block !important;
+    z-index: 9999;
   }
 
+  /* Oculta menú normal */
   nav.menu {
     display: none;
+    opacity: 0;
   }
 
-  /* MENÚ DESPLEGABLE (FULLSCREEN desde la derecha) */
+  /* Menú fullscreen desde la derecha */
   nav.menu.open {
     display: flex !important;
     position: fixed !important;
     inset: 0 !important;
     background: #3b332c !important;
-    z-index: 9998 !important;
+    z-index: 998 !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 28px !important;
-    padding-top: 140px !important;
-    text-align: center;
+    padding: 150px 20px 0px;
     transform: translateX(100%);
     transition: transform .45s ease;
+    text-align: center;
   }
 
   nav.menu.open.show {
     transform: translateX(0);
+    opacity: 1;
   }
 
-  /* Logo en el menú */
+  /* Logo pequeño centrado encima */
   .menu-logo {
     position: absolute;
     top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90px;
-    height: 90px;
-    z-index: 9999;
+    width: 80px;
+    height: auto;
   }
 
   .menu-logo img {
@@ -1293,63 +1297,47 @@ body.avisos h1 {
     display: block;
   }
 
-  /* Enlaces centrados */
+  /* Enlaces centrados y clicables */
   nav.menu.open a {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 1.6rem !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
     color: #f6f1e8 !important;
+    margin: 12px 0 !important;
     opacity: 0;
     animation: menuFadeIn 0.6s ease forwards;
   }
 
-  nav.menu.open a:nth-child(2) { animation-delay: 0.15s; }
-  nav.menu.open a:nth-child(3) { animation-delay: 0.30s; }
-  nav.menu.open a:nth-child(4) { animation-delay: 0.45s; }
-  nav.menu.open a:nth-child(5) { animation-delay: 0.60s; }
+  nav.menu.open a:nth-of-type(1) { animation-delay: 0.15s; }
+  nav.menu.open a:nth-of-type(2) { animation-delay: 0.30s; }
+  nav.menu.open a:nth-of-type(3) { animation-delay: 0.45s; }
+  nav.menu.open a:nth-of-type(4) { animation-delay: 0.60s; }
 
   @keyframes menuFadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Overlay */
+  /* Fondo semitransparente */
   .menu-overlay {
     display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 997;
     opacity: 0;
-    pointer-events: none;
     transition: opacity .4s ease;
+    pointer-events: none;
   }
-
   .menu-overlay.show {
     opacity: 1;
     pointer-events: auto;
   }
 
-  /* Footer centrado */
-  .footer {
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 10px !important;
-    padding: 25px 15px !important;
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    width: 100% !important;
-  }
-
-  .footer-right {
-    justify-content: center !important;
-    gap: 15px !important;
-  }
-
+  /* Desactivar scroll cuando está abierto */
   body.menu-open {
     overflow: hidden;
   }
- 
 }
+
