@@ -99,8 +99,12 @@ toggle.addEventListener('click', () => {
 
 overlay.addEventListener('click', closeMenu);
 
-document.querySelectorAll('.menu a').forEach(link => {
-  link.addEventListener('click', closeMenu);
+document.querySelectorAll('nav.menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();
+    // Para que el enlace funcione bien
+    window.location.href = link.getAttribute('href');
+  });
 });
 </script>
 
