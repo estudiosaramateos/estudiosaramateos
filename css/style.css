@@ -1478,20 +1478,20 @@ nav.menu {
 
   /* Mostrar hamburguesa */
   .menu-toggle {
-    display: block;
+    display: block !important;
   }
 
   /* Ocultar menú normal */
-  header .menu {
+  nav.menu {
     display: none !important;
   }
 
   /* MENÚ FULLSCREEN */
-  header .menu.open {
+  nav.menu.open {
     display: flex !important;
     position: fixed !important;
-    inset: 0 !important;                 /* clave para ocupar toda la pantalla */
-    background: #3b332c !important;      /* marrón elegante (cambia aquí si quieres) */
+    inset: 0 !important;                 
+    background: #3b332c !important;      /* marrón oscuro elegante */
     z-index: 9998 !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -1504,22 +1504,34 @@ nav.menu {
     text-align: center !important;
   }
 
-  header .menu.open.show {
+  nav.menu.open.show {
     opacity: 1 !important;
     pointer-events: auto !important;
   }
 
-  header .menu.open a {
+  nav.menu.open a {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 1.6rem !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
     color: var(--arena) !important;
     text-align: center !important;
+    opacity: 0;
+    animation: menuFadeIn 0.6s ease forwards;
   }
 
-  header .menu.open a:hover,
-  header .menu.open a.active {
+  nav.menu.open a:nth-child(1) { animation-delay: 0.15s; }
+  nav.menu.open a:nth-child(2) { animation-delay: 0.30s; }
+  nav.menu.open a:nth-child(3) { animation-delay: 0.45s; }
+  nav.menu.open a:nth-child(4) { animation-delay: 0.60s; }
+
+  @keyframes menuFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  nav.menu.open a:hover,
+  nav.menu.open a.active {
     color: #fff !important;
   }
 
@@ -1551,6 +1563,8 @@ nav.menu {
     justify-content: center !important;
     padding: 18px 18px !important;
   }
+}
+
 
 /* =========================
    FOOTER MÓVIL (CENTRADO)
@@ -1576,7 +1590,4 @@ nav.menu {
     justify-content: center !important;
     gap: 15px !important;
   }
-}
-
-
 }
