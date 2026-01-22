@@ -112,7 +112,7 @@ nav a.active {
 }
 
 .footer-left a:hover,
-footer-right a:hover {
+.footer-right a:hover {
   color: var(--negro);
 }
 
@@ -647,7 +647,6 @@ body.proyecto-individual .imagenes-proyecto img {
   height: auto;
   display: block;
 }
-
 
 .doble-vertical {
   display: grid;
@@ -1195,199 +1194,6 @@ body.avisos h1 {
 }
 
 /* =========================
-   ARREGLO MÓVIL (MINIMAL)
-   ========================= */
-@media screen and (max-width: 900px) {
-
-  /* 1) Evitar scroll horizontal */
-  body, html {
-    overflow-x: hidden;
-  }
-
-  /* 2) Header: ajustar padding */
-  header {
-    padding: 16px 18px;
-  }
-
-  /* 3) Nav: que no se salga */
-  nav {
-    position: relative !important;
-    top: 0 !important;
-    right: 0 !important;
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  /* 4) Footer: columna y centrado */
-  .footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 20px;
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    width: 100%;
-  }
-
-  .footer-right {
-    justify-content: center;
-  }
-
-  /* 5) Ajuste general de secciones */
-  .section {
-    padding: 0 18px;
-    margin: 18px auto 0;
-  }
-
-  /* 6) Proyectos: pasar a 1 columna */
-  .proyectos-grid {
-    grid-template-columns: 1fr !important;
-    padding: 0 18px !important;
-    gap: 20px !important;
-  }
-
-  /* 7) Intro estudio: que la imagen baje */
-  .intro-estudio .intro-container {
-    flex-direction: column !important;
-    align-items: center !important;
-    margin: 80px auto 80px !important;
-    gap: 30px !important;
-  }
-
-  .intro-estudio .intro-image {
-    flex: 0 0 100% !important;
-    max-width: 420px;
-  }
-
-  .intro-estudio .intro-text {
-    max-width: 100% !important;
-    text-align: center !important;
-  }
-
-  /* 8) Contacto: columnas abajo */
-  body.contacto .intro-container {
-    flex-direction: column !important;
-    gap: 40px !important;
-    padding: 0 18px !important;
-  }
-
-  body.contacto .section.contacto {
-    padding: 80px 18px 120px !important;
-  }
-
-  /* 9) Proyectos individuales: imágenes full */
-  .imagenes-proyecto {
-    padding: 0 18px !important;
-  }
-
-  .doble-vertical {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* ================= GRACIAS (manteniendo header igual que estudio) ================= */
-
-body.gracias header {
-  height: auto;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px 40px;
-}
-
-body.gracias .logo-small {
-  position: absolute;
-  top: 20px;
-  left: 40px;
-}
-
-body.gracias nav {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-}
-
-/* CONTENIDO CENTRADO (sin tocar el header) */
-body.gracias .gracias-container {
-  max-width: 900px;
-  width: 100%;
-  margin: 200px auto; /* centra en la pantalla y respira */
-  padding: 0 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-}
-
-body.gracias .gracias-container h1 {
-  font-family: 'Lora', serif;
-  font-weight: 100;
-  font-size: 2.2rem;
-  letter-spacing: -0.4px;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-body.gracias .gracias-container p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--negro);
-  margin: 0;
-  max-width: 650px;
-}
-
-/* BOTÓN IGUAL QUE EN CONTACTO */
-body.gracias .btn-volver {
-  display: inline-block;
-  padding: 12px 38px;
-  border: 1px solid var(--negro);
-  background: transparent;
-  color: var(--negro);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease, transform 0.2s ease;
-}
-
-body.gracias .btn-volver:hover {
-  background: var(--negro);
-  color: var(--arena);
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  body.gracias .gracias-container {
-    margin: 140px auto;
-    gap: 22px;
-  }
-
-  body.gracias .gracias-container h1 {
-    font-size: 1.8rem;
-  }
-
-  body.gracias .gracias-container p {
-    font-size: 0.9rem;
-  }
-
-  body.gracias .btn-volver {
-    width: 100%;
-    text-align: center;
-  }
-
-/* =========================
    HEADER (estructura limpia)
 ========================= */
 .header {
@@ -1441,37 +1247,87 @@ body.gracias .btn-volver:hover {
 ========================= */
 @media (max-width: 768px) {
 
+ /* Logo pequeño en el menú */
+  .menu.open {
+    padding-top: 70px; /* deja espacio arriba para el logo */
+  }
+
+  .menu.open::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: auto;
+    background-image: url("../img/logo.png"); /* ruta a tu logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Asegura que el menú quede centrado */
+  nav.menu.open {
+    position: relative; /* IMPORTANTE */
+    padding-top: 110px; /* espacio para el logo */
+  }
+
+nav.menu.open::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;   /* tamaño del logo pequeño */
+  height: 90px;  /* tamaño del logo pequeño */
+  background-image: url("../img/favicon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 9999;
+}
+
+  nav.menu.open {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav.menu.open a {
+    margin: 0;
+  }
+
   /* Mostrar hamburguesa */
   .menu-toggle {
-    display: block;
+    display: block !important;
   }
 
   /* Ocultar menú normal */
   nav.menu {
-    display: none;
+    display: none !important;
   }
 
   /* Menú fullscreen */
   nav.menu.open {
     display: flex !important;
     position: fixed !important;
-    inset: 0 !important;                  /* ocupa toda la pantalla */
-    background: #3b332c !important;       /* marrón oscuro elegante */
+    inset: 0 !important;
+    background: #3b332c !important;
     z-index: 9998 !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
     gap: 28px !important;
     padding: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transition: opacity .4s ease !important;
-    text-align: center !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+    text-align: center;
   }
 
   nav.menu.open.show {
-    opacity: 1 !important;
-    pointer-events: auto !important;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   nav.menu.open a {
@@ -1479,8 +1335,7 @@ body.gracias .btn-volver:hover {
     font-size: 1.6rem !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
-    color: #f6f1e8 !important; /* color claro */
-    text-align: center !important;
+    color: #f6f1e8 !important;
     opacity: 0;
     animation: menuFadeIn 0.6s ease forwards;
   }
@@ -1493,11 +1348,6 @@ body.gracias .btn-volver:hover {
   @keyframes menuFadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-
-  nav.menu.open a:hover,
-  nav.menu.open a.active {
-    color: #fff !important;
   }
 
   /* Overlay */
@@ -1518,23 +1368,13 @@ body.gracias .btn-volver:hover {
     pointer-events: auto;
   }
 
-  /* Evitar scroll cuando el menú está abierto */
-  body.menu-open {
-    overflow: hidden;
-  }
-
   /* Logo centrado */
   .header {
     justify-content: center !important;
   }
-}
 
-/* =========================
-   FOOTER CENTRADO MÓVIL
-========================= */
-@media (max-width: 768px) {
+  /* Footer centrado */
   .footer {
-    display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
@@ -1553,6 +1393,10 @@ body.gracias .btn-volver:hover {
     justify-content: center !important;
     gap: 15px !important;
   }
+
+  /* Evitar scroll cuando menú abierto */
+  body.menu-open {
+    overflow: hidden;
+  }
+ 
 }
-
-
