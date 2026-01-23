@@ -28,11 +28,25 @@
   <div class="logo-small">
     <img src="img/favicon.png" alt="Sara Mateos">
   </div>
-  <nav aria-label="Menú principal">
-    <a href="index.html">Inicio</a>
-    <a href="proyectos.html">Proyectos</a>
-    <a href="estudio.html">Estudio</a>
-    <a class="active" href="contacto.html">Contacto</a>
+
+  <!-- BOTÓN HAMBURGUESA (solo móvil) -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="menu">
+    <div class="menu-panel">
+      <div class="menu-logo">
+        <img src="img/favicon.png" alt="Logo pequeño">
+      </div>
+
+      <a href="index.html">Inicio</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="estudio.html">Estudio</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
   </nav>
 </header>
 
@@ -45,6 +59,7 @@
       <p>Si quieres ponerte en contacto conmigo, completa el siguiente formulario o utiliza mis datos de contacto.</p>
 
       <form action="https://formsubmit.co/hola@estudiosaramateos.com" method="POST" class="contact-form">
+
   <label for="nombre">Nombre</label>
   <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre">
 
@@ -57,7 +72,7 @@
   <!-- Evita spam -->
   <input type="hidden" name="_captcha" value="false">
 
-  <!-- Redirige a gracias -->
+  <!-- Redirige a la página de gracias -->
   <input type="hidden" name="_next" value="https://www.estudiosaramateos.com/gracias.html">
 
   <button type="submit">Enviar</button>
@@ -114,6 +129,43 @@
     <a href="https://es.pinterest.com/estudiosaramateos/" target="_blank" rel="noopener noreferrer">Pinterest</a>
   </div>
 </footer>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+const overlay = document.createElement('div');
+overlay.classList.add('menu-overlay');
+document.body.appendChild(overlay);
+
+function openMenu() {
+  menu.classList.add('open', 'show');
+  toggle.classList.add('open');
+  overlay.classList.add('show');
+  document.body.classList.add('menu-open');
+}
+
+function closeMenu() {
+  menu.classList.remove('open', 'show');
+  toggle.classList.remove('open');
+  overlay.classList.remove('show');
+  document.body.classList.remove('menu-open');
+}
+
+toggle.addEventListener('click', () => {
+  if (menu.classList.contains('open')) closeMenu();
+  else openMenu();
+});
+
+overlay.addEventListener('click', closeMenu);
+
+document.querySelectorAll('nav.menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();
+  });
+});
+</script>
+
 
 </body>
 </html>

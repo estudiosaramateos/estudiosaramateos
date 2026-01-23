@@ -20,13 +20,27 @@
     <div class="logo-small">
       <img src="img/favicon.png" alt="Sara Mateos">
     </div>
-    <nav>
+   
+  <!-- BOTÓN HAMBURGUESA (solo móvil) -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="menu">
+    <div class="menu-panel">
+      <div class="menu-logo">
+        <img src="img/favicon.png" alt="Logo pequeño">
+      </div>
+
       <a href="index.html">Inicio</a>
-      <a href="proyectos.html" class="active">Proyectos</a>
+      <a href="proyectos.html">Proyectos</a>
       <a href="estudio.html">Estudio</a>
       <a href="contacto.html">Contacto</a>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
 
   <!-- SECCIÓN PROYECTO -->
   <section class="section proyecto-detalle">
@@ -125,6 +139,42 @@
       <a href="https://es.pinterest.com/estudiosaramateos/" target="_blank">Pinterest</a>
     </div>
   </footer>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+const overlay = document.createElement('div');
+overlay.classList.add('menu-overlay');
+document.body.appendChild(overlay);
+
+function openMenu() {
+  menu.classList.add('open', 'show');
+  toggle.classList.add('open');
+  overlay.classList.add('show');
+  document.body.classList.add('menu-open');
+}
+
+function closeMenu() {
+  menu.classList.remove('open', 'show');
+  toggle.classList.remove('open');
+  overlay.classList.remove('show');
+  document.body.classList.remove('menu-open');
+}
+
+toggle.addEventListener('click', () => {
+  if (menu.classList.contains('open')) closeMenu();
+  else openMenu();
+});
+
+overlay.addEventListener('click', closeMenu);
+
+document.querySelectorAll('nav.menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();
+  });
+});
+</script>
 
 </body>
 </html>

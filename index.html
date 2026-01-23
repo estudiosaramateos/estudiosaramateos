@@ -35,15 +35,17 @@
   </button>
 
   <nav class="menu">
-  <div class="menu-logo">
-    <img src="img/favicon.png" alt="Logo pequeño">
+  <div class="menu-panel">
+    <div class="menu-logo">
+      <img src="img/favicon.png" alt="Logo pequeño">
+    </div>
+
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="estudio.html">Estudio</a>
+    <a href="contacto.html">Contacto</a>
   </div>
-  <a href="index.html" class="active">Inicio</a>
-  <a href="proyectos.html">Proyectos</a>
-  <a href="estudio.html">Estudio</a>
-  <a href="contacto.html">Contacto</a>
 </nav>
-</header>
 
   <!-- FOOTER CON AVISOS LEGALES -->
   <footer class="footer">
@@ -102,8 +104,6 @@ overlay.addEventListener('click', closeMenu);
 document.querySelectorAll('nav.menu a').forEach(link => {
   link.addEventListener('click', () => {
     closeMenu();
-    // Para que el enlace funcione bien
-    window.location.href = link.getAttribute('href');
   });
 });
 </script>
