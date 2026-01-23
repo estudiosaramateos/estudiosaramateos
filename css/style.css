@@ -1217,15 +1217,15 @@ body.avisos h1 {
 ========================= */
 .menu-toggle {
   display: none;
-  position: absolute;
-  top: 18px;
+  position: fixed;
+  top: 20px;
   right: 20px;
   width: 32px;
   height: 28px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 10001; /* 🔥 AÑADIDO: siempre por encima */
   padding: 0;
 }
 
@@ -1236,126 +1236,118 @@ body.avisos h1 {
   background: #111;
   margin: 6px 0;
   border-radius: 10px;
-  transition: transform .35s ease, opacity .35s ease;
+  transition: transform .35s ease, opacity .35s ease, background .3s ease;
+}
+
+/* 🔥 AÑADIDO: color visible al abrir */
+.menu-toggle.open span {
+  background: #f6f1e8;
 }
 
 .menu-toggle.open span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
+
 .menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
+
 .menu-toggle.open span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
 /* =========================
-   MENÚ MÓVIL (PANEL DESDE DERECHA)
+   MENÚ + OVERLAY (MÓVIL)
 ========================= */
 
-.menu-toggle {
-  display: none;
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  transition: opacity .4s ease;
+  z-index: 9998;
+  pointer-events: none;
 }
 
-.menu-logo {
-  display: none;
+.menu-overlay.show {
+  opacity: 1;
 }
+
+/* Bloquear scroll al abrir */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* =========================
+   MEDIA QUERY
+========================= */
 
 @media (max-width: 768px) {
 
-  /* Mostrar hamburguesa */
   .menu-toggle {
     display: block;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 10000;
   }
 
-  /* Ocultar menú normal */
   nav.menu {
     display: none;
   }
 
-  /* Menú panel (fuera de pantalla a la derecha) */
   nav.menu.open {
-    display: flex;
+    display: block;
     position: fixed;
-    top: 0;
-    right: 0;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: auto;
+  }
+
+  .menu-panel {
     width: 100%;
     height: 100vh;
-    background: #7b6b5f;  /* marrón claro */
-    z-index: 9999;
+    background: #7b6b5f;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     transform: translateX(100%);
     transition: transform .5s ease;
+
+    z-index: 9999; /* 🔥 AÑADIDO */
+    pointer-events: auto;
   }
 
-  /* Menú abierto */
-  nav.menu.open.show {
+  nav.menu.open.show .menu-panel {
     transform: translateX(0);
   }
 
-  /* Logo SOLO cuando el menú está abierto */
-  nav.menu.open .menu-logo {
-    display: block;
+  nav.menu .menu-logo {
+    display: none;
     position: absolute;
-    top: 40px;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
-    width: 55px;
-    height: auto;
+    width: 75px;
   }
 
-  /* Enlaces centrados */
-  nav.menu.open a {
+  nav.menu .menu-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+nav.menu.open .menu-logo {
+  display: block;
+}
+
+  nav.menu a {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #f6f1e8;
     margin: 18px 0;
+    text-decoration: none;
   }
-
-  /* Overlay */
-  .menu-overlay {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    z-index: 9998;
-    opacity: 0;
-    transition: opacity .4s ease;
-    pointer-events: none;
-  }
-
-  .menu-overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  body.menu-open {
-    overflow: hidden;
-  }
-
-/* LOGO PEQUEÑO EN MENÚ MÓVIL */
-nav.menu.open .menu-logo {
-  width: 75px;
-  height: auto;
-  top: 150px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-nav.menu.open .menu-logo img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 
 }
-
